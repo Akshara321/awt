@@ -32,7 +32,8 @@ app.post('/api/login',(req,res)=>{
 function verifyToken(req,res,next){
     const bh=req.headers['authorization']
     if(typeof bh!=='undefined'){
-        const bt=bh[1]
+        const bearer=bh.split(' ');
+        const bt=bearer[1]
         req.token=bt
         next()
     }
